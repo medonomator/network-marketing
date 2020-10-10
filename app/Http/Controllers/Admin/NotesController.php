@@ -27,9 +27,8 @@ class NotesController extends Controller
     {
         $notes = Notes::all();
         $array = iterator_to_array($notes);
-        $shuffleNotes = shuffle($array);
+        shuffle($array);
 
-       
         return view('index', ['notes' => $array]);
     }
 
@@ -78,9 +77,10 @@ class NotesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        //
+        Notes::where('id', $request['noteId'])->update(['body' => $request['body']]);
+        return redirect()->back()->with('update', 'Update successfully');
     }
 
     /**

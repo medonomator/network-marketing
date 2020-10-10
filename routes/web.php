@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\LoginController;
 
 // Artisan::call('migrate');
-// Artisan::call('db:seed --class=UserSeeder');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/admin/notes/create', [NotesController::class, 'store']);
     Route::get('/admin/notes/delete/{id}', [NotesController::class, 'destroy']);
+    Route::put('/admin/notes/update', [NotesController::class, 'update']);
 });
 
 Route::get('/admin/{any}', [AdminController::class, 'index']);

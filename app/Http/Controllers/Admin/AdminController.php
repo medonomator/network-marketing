@@ -13,8 +13,7 @@ class AdminController extends Controller
         if(!Auth::user()) {
             return redirect('login');
         }
-        // сперва нужно проверить залогинен ли админ
-
+     
         return view('admin.index');
     }
 }
