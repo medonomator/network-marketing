@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
-        if(!Auth::user()) {
+        if (!Auth::user()) {
             return redirect('login');
         }
-     
+
         return view('admin.index');
     }
 }
