@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Notes;
+use App\Models\Note;
 use Illuminate\Http\Request;
+use Gate;
+use Auth;
 
 class NotesController extends Controller
 {
@@ -15,7 +17,13 @@ class NotesController extends Controller
      */
     public function index()
     {
-        return view('admin.notes', ['notes' => Notes::orderBy('created_at', 'desc')->get()]);
+
+        // Auth::logout();
+        if(Gate::allows('view-notes')) {
+            return view('admin.notes', ['notes' => Note::orderBy('created_at', 'desc')->get()]);
+        } else {
+            return 'Access denied';
+        }
     }
 
     /**
@@ -25,7 +33,7 @@ class NotesController extends Controller
      */
     public function random()
     {
-        $notes = Notes::all();
+        $notes = Note::all();
         $array = iterator_to_array($notes);
         shuffle($array);
 
@@ -40,7 +48,7 @@ class NotesController extends Controller
     public function store(Request $request)
     {
 
-        $note = Notes::firstOrCreate([
+        $note = Note::firstOrCreate([
             'body' => $request['body'],
             'visible' => true,
             'likes' => 0
@@ -79,7 +87,7 @@ class NotesController extends Controller
      */
     public function update(Request $request)
     {
-        Notes::where('id', $request['noteId'])->update(['body' => $request['body']]);
+        Note::where('id', $request['noteId'])->update(['body' => $request['body']]);
         return redirect()->back()->with('update', 'Update successfully');
     }
 
@@ -91,7 +99,7 @@ class NotesController extends Controller
      */
     public function destroy($id)
     {
-        Notes::destroy($id);
+        Note::destroy($id);
         return redirect('admin/notes');
     }
 }

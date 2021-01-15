@@ -8,6 +8,9 @@ use Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * Authenticate the user of the application.
+     */
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -17,5 +20,15 @@ class LoginController extends Controller
         } else {
             return redirect('login')->with('error', 'Invalid username or password');
         }    
+    }
+
+    /**
+     * Log the user out of the application.
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect('/login');
     }
 }

@@ -44,11 +44,31 @@
 
     <body>
         <div class="wrapper main-wrapper">
-            <div class="header">
+            <div class="top-panel">
                 <div class="logo">
                     <a href="/">
-                        <img src="./img/logo.png" alt="logo" />
+                        <img src="./img/greenway-logo.png" alt="logo" />
                     </a>
+                </div>
+
+                <div class="main-menu">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/stocks">Акции</a></li>
+                        <li><a href="/brands">Бренды</a></li>
+                        <li><a href="/blog">Блог</a></li>
+                        <li><a href="/contacts">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="call-us">
+                    <div class="icon">
+                        <img src="./img/call_us.png" alt="alt" />
+                    </div>
+                    <div class="call-us__right">
+                        <p class="call-us__text">Позвоните нам</p>
+                        <p class="call-us__phone">+7(999)-121-09-81</p>
+                    </div>
                 </div>
             </div>
 
@@ -58,45 +78,21 @@
                 <div class="bar2"></div>
                 <div class="bar3"></div>
             </div>
+        </div>
 
-            <div class="main-menu">
-                <ul>
-                    <li><a href="/">Заметки</a></li>
-                    <li><a href="/articles">Статьи</a></li>
-                    <li><a href="/greenway">GreenWay</a></li>
-                    <li><a href="/contacts">Контакты</a></li>
-                </ul>
+        <div class="categories">
+            <div class="wrapper">
+                <!-- 123 -->
             </div>
+        </div>
 
-            <div class="about">
-                <p>Кто глубоко поймет идею сетевого маркетинга никогда не уйдет отсюда</p>
-            </div>
-
+        <div class="wrapper main-content">
             @yield('content')
         </div>
 
         <footer class="footer">
             <div class="wrapper">
-                <div class="left-block">
-                    <p class="link">Связь:</p>
-                    <div class="messenger-icons">
-                        <a href="https://api.whatsapp.com" target="_blank" class="messenger-icons-item"
-                            ><img src="./img/icons/whatsapp.png" alt="alt"
-                        /></a>
-                        <a href="https://t.me/medonomator" target="_blank" class="messenger-icons-item"
-                            ><img src="./img/icons/telegram.png" alt="alt"
-                        /></a>
-                        <a href="https://vk.com/medonomator" target="_blank" class="messenger-icons-item"
-                            ><img src="./img/icons/vk-1.svg" alt="alt"
-                        /></a>
-                    </div>
-
-                    <a class="url-partners" href="http://greenway-zorina.ru/">Стать партнером GreenWay</a>
-                </div>
-
-                <div class="right-block">
-                    <a href="contacts">Поддержать проект</a>
-                </div>
+                Footer
             </div>
         </footer>
         <script src="libs/jquery/jquery.min.js"></script>

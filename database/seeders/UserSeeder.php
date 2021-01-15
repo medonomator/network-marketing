@@ -15,9 +15,18 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'id' => 1,
                 'name' => 'admin',
                 'email' => 'a@a.ru',
+                'password' => bcrypt(12345678),
+            ],
+            [
+                'name' => 'Alisa',
+                'email' => 'b@b.ru',
+                'password' => bcrypt(12345678),
+            ],
+            [
+                'name' => 'MiroSlava',
+                'email' => 'c@c.ru',
                 'password' => bcrypt(12345678),
             ]
         ];

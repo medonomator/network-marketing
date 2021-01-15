@@ -19,6 +19,13 @@
                 </ul>
             </div>
 
+            <div class="user-info">
+                <p>{{ Auth::user()->name }}</p>
+                <a href="{{ url('/logout') }}">Выйти</a>
+                <br>
+                <a href="{{ url('/') }}">Main</a>
+            </div>
+    
             <div class="right-block">@yield('content')</div>
         </div>
 
