@@ -12,7 +12,7 @@ class AdminController extends Controller
     {
 
         if (!Auth::user()) {
-            return redirect('login');
+            return redirect('admin-login');
         }
 
         return view('admin.index');

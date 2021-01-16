@@ -21,7 +21,7 @@
 
             <div class="user-info">
                 <p>{{ Auth::user()->name }}</p>
-                <a href="{{ url('/logout') }}">Выйти</a>
+                <a href="{{ url('/admin-logout') }}">Выйти</a>
                 <br>
                 <a href="{{ url('/') }}">Main</a>
             </div>

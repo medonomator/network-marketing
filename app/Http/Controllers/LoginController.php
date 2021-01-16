@@ -18,7 +18,7 @@ class LoginController extends Controller
         if(auth()->attempt($credentials)) {
             return view('admin.index');
         } else {
-            return redirect('login')->with('error', 'Invalid username or password');
+            return redirect('admin-login')->with('error', 'Invalid username or password');
         }    
     }
 
@@ -29,6 +29,6 @@ class LoginController extends Controller
     {
         Auth::logout();
         $request->session()->invalidate();
-        return redirect('/login');
+        return redirect('admin-login');
     }
 }

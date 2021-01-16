@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\NotesController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 
 // Artisan::call('migrate');
@@ -17,7 +18,9 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', [NotesController::class, 'random']);
+Route::get('/', [ProductController::class, 'index']);
+
+Route::get('/product/{id}', [ProductController::class, 'show']);
 
 Route::get('/articles', function () {
     return view('articles');
@@ -31,24 +34,28 @@ Route::get('/contacts', function () {
     return view('contacts');
 });
 
-Route::get('/login', function () {
+Route::get('/admin-login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/admin-login', [LoginController::class, 'authenticate'])->name('admin-login');
+Route::get('/admin-logout', [LoginController::class, 'logout'])->name('admin-logout');
+
+// Route::get('/') 
 
 Route::get('/admin', [AdminController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/admin/notes', [NotesController::class, 'index']);
-    Route::get('/admin/notes/create', function () {
-        return view('admin.notes-create');
+    Route::prefix('admin')->group(function () {
+        Route::get('/notes', [NotesController::class, 'index']);
+        Route::get('/notes/create', function () {
+            return view('admin.notes-create');
+        });
+    
+        Route::post('/notes/create', [NotesController::class, 'store']);
+        Route::get('/notes/delete/{id}', [NotesController::class, 'destroy']);
+        Route::put('/notes/update', [NotesController::class, 'update']);
     });
-
-    Route::post('/admin/notes/create', [NotesController::class, 'store']);
-    Route::get('/admin/notes/delete/{id}', [NotesController::class, 'destroy']);
-    Route::put('/admin/notes/update', [NotesController::class, 'update']);
 });
 
 Route::get('/admin/{any}', [AdminController::class, 'index']);

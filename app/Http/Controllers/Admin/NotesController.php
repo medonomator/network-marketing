@@ -17,8 +17,6 @@ class NotesController extends Controller
      */
     public function index()
     {
-
-        // Auth::logout();
         if(Gate::allows('view-notes')) {
             return view('admin.notes', ['notes' => Note::orderBy('created_at', 'desc')->get()]);
         } else {

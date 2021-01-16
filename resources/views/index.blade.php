@@ -1,11 +1,25 @@
 @extends('layouts.app') @section('content')
 
-<form id="login-form" class="modal">...</form>
+<section>
+    <div class="products">
+        @foreach ($products as $index=>$product)
+        <a href="{{ url("product/$product->id") }}" class="products__item">
+            <p class="products__item-title">{{$product->title}}</p>  
+            <div class="products__item-img">
+                <img src={{asset('img/1.jpg')}} alt="alt">
+            </div>
 
-Main Page
+            <p class="products__item-price">Цена: <b>{{$product->price ? $product->price : $product->old_price}}</b></p>
 
-@php
-    echo 'asdsad';
-@endphp
+            <button class="to-cart">В корзину</button>
+        </a>
+    @endforeach
+    </div>
+    
+    <div class="links">
+        {{ $products->links('vendor.pagination.default') }}
+    </div>
+    
+</section>
 
 @endsection

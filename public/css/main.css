@@ -322,6 +322,95 @@ a {
   padding: 12px 12px;
 }
 
+.products {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.products__item {
+  width: 300px;
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding-bottom: 15px;
+}
+
+.products__item img {
+  transition: all 0.3s ease;
+}
+
+.products__item:hover img {
+  transform: scale(1.05);
+}
+
+.products__item-img {
+  margin: auto;
+  width: 200px;
+}
+
+.products__item-title {
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.products__item-price {
+  text-align: center;
+  padding-bottom: 10px;
+  color: #333;
+}
+
+.products__item-price b {
+  color: green;
+}
+
+.to-cart {
+  border: none;
+  margin: auto;
+  background: #6dac23;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.to-cart:hover {
+  background: green;
+}
+
+.links a {
+  color: #333;
+}
+
+.pagination {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.pagination li {
+  border: 1px solid;
+  padding: 3px 10px;
+  margin: 2px;
+}
+
+.footer {
+  background: #363636;
+  height: 200px;
+  color: white;
+}
+
+.sign-in a {
+  color: #333;
+  display: block;
+}
+
 /*==========  Desktop First  ==========*/
 
 /* Large Devices, Wide Screens */

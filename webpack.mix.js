@@ -13,7 +13,8 @@ const mix = require("laravel-mix");
 
 mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/admin.sass", "public/css/admin.css")
-    .sass("resources/sass/main.sass", "public/css/main.css");
+    .sass("resources/sass/main.sass", "public/css/main.css")
+    .sass("resources/sass/product.sass", "public/css/product.css");
 
 mix.browserSync({
     proxy: "http://localhost:8000/"
@@ -26,3 +27,5 @@ mix.webpackConfig({
         }
     }
 });
+
+mix.disableNotifications();

@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8" />
 
-        <title>Сетевой маркетинг</title>
-        <meta name="description" content="Сетевой маркетинг" />
+        <title>Greenway Shop</title>
+        <meta name="description" content="Greenway Shop" />
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -47,7 +47,7 @@
             <div class="top-panel">
                 <div class="logo">
                     <a href="/">
-                        <img src="./img/greenway-logo.png" alt="logo" />
+                        <img src="{{ asset('img/greenway-logo.png') }}" alt="logo" />
                     </a>
                 </div>
 
@@ -63,12 +63,18 @@
 
                 <div class="call-us">
                     <div class="icon">
-                        <img src="./img/call_us.png" alt="alt" />
+                        <img src="{{ asset('img/call_us.png') }}" alt="alt" />
                     </div>
                     <div class="call-us__right">
                         <p class="call-us__text">Позвоните нам</p>
                         <p class="call-us__phone">+7(999)-121-09-81</p>
                     </div>
+                </div>
+
+                {{ Auth::check() ? 'yes': 'false' }}
+                <div class="sign-in">
+                    <a href="/login">Войти</a>
+                    <a href="/registration">Регистрация</a>
                 </div>
             </div>
 
