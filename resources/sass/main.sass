@@ -1,0 +1,299 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	overflow-x: hidden
+	color: #222
+	font-weight: 400!important
+	font-family: 'PTSansCaption', sans-serif!important
+img
+	width: 100%
+li
+	list-style-type: none
+p
+	font-size: 18px
+hr
+	margin-bottom: 30px
+	color: #999
+
+.hover-color
+	color: $accent
+	transition: all .3s ease
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.text-center
+	text-align: center
+
+::selection
+	background-color: $accent
+	color: #fff
+
+.wrapper
+	margin-right: auto
+	margin-left: auto
+	max-width: 1170px
+	position: relative
+.h2
+	text-transform: uppercase
+	text-align: center
+	margin: 40px 0
+
+.h3,.h3-low
+	font-size: 26px
+	padding-bottom: 5px
+	color: #666
+
+.h3-low
+	display: none
+	text-align: center
+	margin-bottom: 10px
+
+// header
+.header
+	display: flex
+	justify-content: space-between
+	.logo
+		width: 280px
+		margin-top: 40px
+	.sky
+		width: 250px
+		margin-top: 20px
+		margin-left: 40px
+	.soon
+		width: 250px
+		margin-top: -50px
+
+a
+	color: white
+
+.main-menu
+	margin-top: -20px
+	ul
+		display: flex
+		justify-content: center
+	li
+		margin-right: 30px
+		text-transform: uppercase
+		font-family: 'Lora', sans-serif
+		font-weight: 600
+		font-size: 18px
+	a
+		color: #444
+		&:hover
+			@extend .hover-color
+
+.main-menu-active
+	display: block!important
+	animation: main-menu-active .3s ease
+
+.about
+	padding: 20px 0
+	text-align: center
+	// color: $accent
+	text-shadow: 0 1px 2px $accent	
+
+.logo
+	margin-bottom: 60px
+
+.main-wrapper
+	min-height: 100vh
+
+// massonry
+.masonry-layout
+	display: flex
+	flex-direction: column
+	flex-wrap: wrap
+	padding: 10px
+	height: 100vw
+
+	&__panel
+		display: flex
+		flex: 1 1 auto
+		width: 33.3%
+		margin-bottom: 10px
+		border-radius: 10px
+
+.notes
+	display: flex
+	flex-wrap: wrap
+	justify-content: center
+	position: relative
+	margin-bottom: 20px
+	.notes-element
+		border-top: 1px solid silver
+		border-radius: 4px
+		padding: 10px
+		margin: 5px
+		max-width: 250px
+		overflow: hidden
+		background: yellow
+		position: relative
+		box-shadow: $shadow-2
+		transition: all .3s ease
+		margin-bottom: 20px
+		&:hover
+			box-shadow: $shadow-3
+			cursor: pointer
+
+.about
+	margin-top: 10px
+
+.arrow-icon
+	width: 30px
+	position: absolute
+	right: 0px
+	bottom: 5px
+	font-size: 18px
+	i
+		transition: all .3s ease
+		&:hover
+			color: #666
+			cursor: pointer
+
+.top-shuffle
+	display: flex
+	justify-content: center
+	.shuffle
+		background: #00e7ff8a
+		border: 0
+		padding: 5px 10px
+		box-shadow: $shadow-2
+		border-radius: 4px
+		cursor: pointer
+		margin-bottom: 20px
+		transition: all .3s ease
+		&:hover
+			background: darken(#00e7ff8a, 10%)
+
+.messenger-icons
+	display: flex
+	&-item
+		width: 50px
+		margin-right: 30px
+
+.footer
+	background: #333
+	color: white
+	height: 300px
+	padding-top: 30px
+
+	.wrapper
+		display: flex
+		justify-content: space-between
+
+	.right-block
+		padding-right: 65px
+		margin-top: 40px
+		a
+			background: yellow
+			border: 0
+			padding: 8px 15px
+			box-shadow: $shadow-2
+			color: black
+			border-radius: 4px
+			cursor: pointer
+			margin-bottom: 20px
+			transition: all .3s ease
+			&:hover
+				background: darken(yellow, 10%)
+
+	.left-block
+		padding-left: 70px
+		.url-partners
+			display: block
+			padding-top: 15px
+			color: white
+
+	.link
+		font-weight: 600
+		padding-bottom: 10px
+
+.fa-down
+	display: flex
+	justify-content: flex-end
+	cursor: pointer
+	margin-bottom: 30px
+
+	i
+		font-size: 40px
+		margin-right: 70px
+		transition: all .3s ease
+		&:hover
+			color: #666
+
+.main-content
+	margin-top: 30px
+	margin-bottom: 50px
+	padding-left: 20px
+	h2
+		font-weight: 600
+		width: 80%
+		padding-bottom: 30px
+
+	.messenger-icons
+		padding-bottom: 30px
+
+	iframe
+		margin-bottom: 30px
+
+.main-content-greenway
+	width: 80%
+	margin: auto
+	margin-bottom: 30px
+	margin-top: 20px
+
+	.greenway-photo
+		width: 300px
+		float: left
+		margin-right: 25px
+
+	.gw-link
+		margin-top: 15px
+		display: block
+		font-size: 20px
+		color: #305ef7
+
+@import "media" // Всегда в конце
