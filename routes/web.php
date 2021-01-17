@@ -34,6 +34,10 @@ Route::get('/contacts', function () {
     return view('contacts');
 });
 
+Route::get('/personal', function () {
+    return view('personal');
+});
+
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -42,14 +46,16 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/register', [LoginController::class, 'clientRegister']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/admin-login', function () {
     return view('auth.admin-login');
 })->name('admin-login');
 
 Route::post('/admin-login', [LoginController::class, 'adminAuthenticate']);
-Route::get('/admin-logout', [LoginController::class, 'logout'])->name('admin-logout');
+Route::get('/admin-logout', [LoginController::class, 'adminLogout'])->name('admin-logout');
 
 
 Route::get('/admin', [AdminController::class, 'index']);

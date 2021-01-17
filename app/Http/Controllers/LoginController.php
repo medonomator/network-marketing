@@ -5,10 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Product;
 use Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * Authenticate the client of the application.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if(auth('web')->attempt($credentials)) {
+            return view('index', ['products' => Product::paginate(15)]);
+        } 
+        
+        return redirect('login')->with('error', 'Invalid username or password');    
+    }
+
     /**
      * Authenticate the user of the application.
      * @param  \Illuminate\Http\Request  $request
@@ -18,7 +35,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if(auth()->attempt($credentials)) {
+        if(auth('admin')->attempt($credentials)) {
             return view('admin.index');
         } else {
             return redirect('admin-login')->with('error', 'Invalid username or password');
@@ -31,10 +48,24 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function adminLogout(Request $request)
-    {
+    {   
         Auth::guard('admin')->logout();
-        $request->session()->invalidate();
+        $sessionKey = auth()->guard('admin')->getName();
+        $request->session()->forget($sessionKey);
         return redirect('admin-login');
+    }
+
+    /**
+     * Log the client out of the application.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        $sessionKey = auth()->guard('web')->getName();
+        $request->session()->forget($sessionKey);
+        return redirect('/');
     }
 
     /**
@@ -44,19 +75,19 @@ class LoginController extends Controller
      */
     public function clientRegister(Request $request)
     {
-        $cleint = Client::where('email', $request->email)->first();
+        $client = Client::where('email', $request->email)->first();
 
-        if($cleint) {
-            return 'Such client уже есть';
+        if($client) {
+            return redirect('login')->with('error', 'Invalid username or password');
         }
 
-        $client = Client::create([
+        $newClient = Client::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
 
-        Auth::guard('web')->login($client);
+        Auth::guard('web')->login($newClient);
 
         return redirect('/');
     }

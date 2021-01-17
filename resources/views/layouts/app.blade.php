@@ -53,7 +53,6 @@
 
                 <div class="main-menu">
                     <ul>
-                        <li><a href="/">Главная</a></li>
                         <li><a href="/stocks">Акции</a></li>
                         <li><a href="/brands">Бренды</a></li>
                         <li><a href="/blog">Блог</a></li>
@@ -74,7 +73,7 @@
                 @if(Auth::guard('web')->check())
                     <div class="entered">
                         <img src="avatar" alt="alt">
-                        <p>UserName</p>
+                        <p>{{ Auth::user()->name }}</p>
                         <a href="/logout">Выйти</a>
                         <a href="/personal">Личный кабинет</a>
                     </div>
@@ -113,5 +112,10 @@
         <!-- jQuery Modal -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
         <script src="js/common.js"></script>
+        <script>
+            if ( window.history.replaceState ) {
+              window.history.replaceState( null, null, window.location.href );
+            }
+            </script>
     </body>
 </html>

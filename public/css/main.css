@@ -406,6 +406,11 @@ a {
   color: white;
 }
 
+.sign-in,
+.entered {
+  margin-left: 30px;
+}
+
 .sign-in a,
 .entered a {
   color: #333;

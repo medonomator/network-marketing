@@ -19406,10 +19406,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/socket/network-marketing/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/socket/network-marketing/resources/sass/admin.sass */"./resources/sass/admin.sass");
-__webpack_require__(/*! /home/socket/network-marketing/resources/sass/main.sass */"./resources/sass/main.sass");
-module.exports = __webpack_require__(/*! /home/socket/network-marketing/resources/sass/product.sass */"./resources/sass/product.sass");
+__webpack_require__(/*! /home/socket/eco-shop/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/socket/eco-shop/resources/sass/admin.sass */"./resources/sass/admin.sass");
+__webpack_require__(/*! /home/socket/eco-shop/resources/sass/main.sass */"./resources/sass/main.sass");
+module.exports = __webpack_require__(/*! /home/socket/eco-shop/resources/sass/product.sass */"./resources/sass/product.sass");
 
 
 /***/ })

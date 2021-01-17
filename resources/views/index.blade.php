@@ -2,7 +2,7 @@
 
 <section>
     <div class="products">
-        @foreach ($products as $index=>$product)
+        @foreach ($products ?? '' as $index=>$product)
         <a href="{{ url("product/$product->id") }}" class="products__item">
             <p class="products__item-title">{{$product->title}}</p>  
             <div class="products__item-img">
@@ -17,7 +17,7 @@
     </div>
     
     <div class="links">
-        {{ $products->links('vendor.pagination.default') }}
+        {{ $products ?? ''->links('vendor.pagination.default') }}
     </div>
     
 </section>
