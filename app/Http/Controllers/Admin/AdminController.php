@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        if (!Auth::user()) {
+        if (!Auth::guard('admin')->check()) {
             return redirect('admin-login');
         }
 

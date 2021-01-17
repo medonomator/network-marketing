@@ -406,7 +406,8 @@ a {
   color: white;
 }
 
-.sign-in a {
+.sign-in a,
+.entered a {
   color: #333;
   display: block;
 }

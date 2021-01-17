@@ -71,11 +71,19 @@
                     </div>
                 </div>
 
-                {{ Auth::check() ? 'yes': 'false' }}
-                <div class="sign-in">
-                    <a href="/login">Войти</a>
-                    <a href="/registration">Регистрация</a>
-                </div>
+                @if(Auth::guard('web')->check())
+                    <div class="entered">
+                        <img src="avatar" alt="alt">
+                        <p>UserName</p>
+                        <a href="/logout">Выйти</a>
+                        <a href="/personal">Личный кабинет</a>
+                    </div>
+                @else
+                    <div class="sign-in">
+                        <a href="/login">Войти</a>
+                        <a href="/register">Регистрация</a>
+                    </div>
+                @endif
             </div>
 
             <!-- Hamburger -->

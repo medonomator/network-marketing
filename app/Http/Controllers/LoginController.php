@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Client;
 use Auth;
 
 class LoginController extends Controller
 {
     /**
      * Authenticate the user of the application.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function authenticate(Request $request)
+    public function adminAuthenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -24,11 +27,37 @@ class LoginController extends Controller
 
     /**
      * Log the user out of the application.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
+    public function adminLogout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
         $request->session()->invalidate();
         return redirect('admin-login');
+    }
+
+    /**
+     * Client register
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function clientRegister(Request $request)
+    {
+        $cleint = Client::where('email', $request->email)->first();
+
+        if($cleint) {
+            return 'Such client уже есть';
+        }
+
+        $client = Client::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        Auth::guard('web')->login($client);
+
+        return redirect('/');
     }
 }
